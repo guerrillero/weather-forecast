@@ -12,6 +12,11 @@ describe('Header', () => {
 
     fixture = TestBed.createComponent(Header);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('data', {
+      eyebrow: 'GRIDPOINT 33,70',
+      title: 'Orlando',
+      description: '28.55°N 81.18°W',
+    });
     await fixture.whenStable();
   });
 

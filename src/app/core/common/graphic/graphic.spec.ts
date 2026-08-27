@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { weatherPeriodFixture } from '../../../../testing/weather.fixture';
 import { Graphic } from './graphic';
 
 describe('Graphic', () => {
@@ -12,6 +13,10 @@ describe('Graphic', () => {
 
     fixture = TestBed.createComponent(Graphic);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('graphic', {
+      card: { title: 'Temperature trend' },
+      periods: [weatherPeriodFixture],
+    });
     await fixture.whenStable();
   });
 

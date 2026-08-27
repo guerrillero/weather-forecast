@@ -1,4 +1,4 @@
 export interface IWeatherGeometry {
-    type: 'Polygon';
-    coordinates: number[][][];
+  type: 'Polygon';
+  coordinates: number[][][];
 }

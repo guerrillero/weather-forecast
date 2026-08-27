@@ -3,100 +3,106 @@
 @import 'tailwindcss';
 
 :root {
-    color-scheme: light dark;
+  color-scheme: light dark;
 }
 
 @theme {
-    --font-brand: "Space Grotesk";
-    --font-second: "JetBrains Mono";
+  --font-brand: 'Space Grotesk';
+  --font-second: 'JetBrains Mono';
 
-    --color-page: light-dark(var(--color-slate-900), var(--color-slate-900));
-    --color-border: light-dark(var(--color-slate-900), var(--color-slate-900));
+  --color-page: light-dark(var(--color-slate-900), var(--color-slate-900));
+  --color-border: light-dark(var(--color-slate-900), var(--color-slate-900));
 
-    /* ---- Text hierarchy ---- */
-    --color-primary: light-dark(var(--color-cyan-300), var(--color-cyan-300));
-    --color-secondary: light-dark(var(--color-purple-300), var(--color-purple-300));
-    --color-muted: light-dark(var(--color-gray-400), var(--color-gray-500));
+  /* ---- Text hierarchy ---- */
+  --color-primary: light-dark(var(--color-cyan-300), var(--color-cyan-300));
+  --color-secondary: light-dark(var(--color-purple-300), var(--color-purple-300));
+  --color-muted: light-dark(var(--color-gray-400), var(--color-gray-500));
 
-    /* ---- Brand accent (links, active states, progress) ---- */
-    --color-accent: light-dark(var(--color-cyan-300), var(--color-cyan-300));
-    --color-accent-hover: light-dark(var(--color-purple-300), var(--color-purple-300));
-    --color-accent-surface: light-dark(var(--color-purple-300), var(--color-purple-300));
+  /* ---- Brand accent (links, active states, progress) ---- */
+  --color-accent: light-dark(var(--color-cyan-300), var(--color-cyan-300));
+  --color-accent-hover: light-dark(var(--color-purple-300), var(--color-purple-300));
+  --color-accent-surface: light-dark(var(--color-purple-300), var(--color-purple-300));
 }
 
 body {
-    margin: 0;
-    background: var(--color-slate-900);
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--color-slate-900);
 }
 
 a {
-    color: var(--color-cyan-300);
-    text-decoration: none;
+  color: var(--color-cyan-300);
+  text-decoration: none;
 }
 
 a:hover {
-    color: var(--color-purple-300);
-}
-
-::-webkit-scrollbar {
-    height: 0;
-    width: 0;
+  color: var(--color-purple-300);
 }
 
 .background {
-    background: radial-gradient(120% 60% at 78% -8%, #16375c 0%, #0a1225 42%, #05070d 100%);
-    padding: 0 0 clamp(40px, 5vw, 72px);
+  min-height: 100dvh;
+  overflow: clip;
+  background: radial-gradient(120% 60% at 78% -8%, #16375c 0%, #0a1225 42%, #05070d 100%);
+  padding: 0 0 clamp(40px, 5vw, 72px);
 }
 
 .frames {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: linear-gradient(to right, rgba(120, 180, 255, .055) 1px, transparent 1px), linear-gradient(to bottom, rgba(120, 180, 255, .055) 1px, transparent 1px);
-    background-size: 43px 43px;
-    mask-image: linear-gradient(to bottom, #000 0%, transparent 72%);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(120, 180, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 180, 255, 0.055) 1px, transparent 1px);
+  background-size: 43px 43px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 72%);
 }
 
 .radar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 90px;
-    pointer-events: none;
-    background: linear-gradient(to bottom, rgba(111, 240, 255, .16), transparent);
-    animation: sweep 9s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(111, 240, 255, 0.16), transparent);
+  animation: sweep 9s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radar,
+  .dot-pulse {
+    animation: none;
+  }
 }
 
 .dot-pulse {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    box-shadow: 0 0 10px var(--color-primary);
-    animation: pulse 2.4s ease-in-out infinite;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+  animation: pulse 2.4s ease-in-out infinite;
 }
 
 @keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 
-    0%,
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: .35;
-        transform: scale(.7);
-    }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
 }
 
 @keyframes sweep {
-    0% {
-        transform: translateY(-100%);
-    }
+  0% {
+    transform: translateY(-100%);
+  }
 
-    100% {
-        transform: translateY(2000%);
-    }
+  100% {
+    transform: translateY(2000%);
+  }
 }

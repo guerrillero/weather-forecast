@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { weatherPeriodFixture } from '../../../../testing/weather.fixture';
 import { Periods } from './periods';
 
 describe('Periods', () => {
@@ -12,6 +13,7 @@ describe('Periods', () => {
 
     fixture = TestBed.createComponent(Periods);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('periods', [weatherPeriodFixture]);
     await fixture.whenStable();
   });
 

@@ -12,6 +12,7 @@ describe('Card', () => {
 
     fixture = TestBed.createComponent(Card);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('card', { title: 'Temperature' });
     await fixture.whenStable();
   });
 

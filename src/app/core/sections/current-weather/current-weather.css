@@ -1,22 +1,22 @@
 .temperature {
-    font-size: clamp(120px, 11vw, 190px);
-    font-weight: 300;
-    line-height: .82;
-    letter-spacing: -.06em;
-    background: linear-gradient(160deg, #ffffff 0%, #9fd6ff 55%, #b79dff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  font-size: clamp(120px, 11vw, 190px);
+  font-weight: 300;
+  line-height: 0.82;
+  letter-spacing: -0.06em;
+  background: linear-gradient(160deg, #ffffff 0%, #9fd6ff 55%, #b79dff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .temperature__unit {
-    font-size: 34px;
-    font-weight: 300;
-    color: var(--color-gray-500);
-    margin-top: 8px;
+  font-size: 34px;
+  font-weight: 300;
+  color: var(--color-gray-500);
+  margin-top: 8px;
 }
 
 .short-forecast {
-    line-height: 1.25;
-    text-wrap: pretty;
+  line-height: 1.25;
+  text-wrap: pretty;
 }

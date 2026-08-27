@@ -1,4 +1,4 @@
 export interface IWeatherMeasurement {
-    unitCode: string;
-    value: number | null;
+  unitCode: string;
+  value: number | null;
 }

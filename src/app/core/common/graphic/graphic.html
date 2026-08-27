@@ -1,50 +1,51 @@
 <div class="flex flex-wrap justify-start gap-4 w-full">
-    <app-card class="flex items-stretch" [card]="graphic().card">
-        @for (item of graphic().periods.slice(0,7); track $index) {
-        <div class="flex flex-col justify-end items-center gap-2">
-            <span class="text-xs text-muted"> {{item.temperature}}</span>
-            <span class="w-12 bg-linear-to-b to-cyan-900/5 rounded-t-lg"
-                [class]="$index % 2 === 0 ? 'from-primary h-20' : 'from-secondary h-12'"></span>
-            <span class="text-[0.5rem] text-muted opacity-50 uppercase font-sans">{{item.name}}</span>
+  <app-card class="flex items-stretch" [card]="graphic().card">
+    @for (item of periods(); track item.number) {
+      <div class="flex flex-col justify-end items-center gap-2">
+        <span class="text-xs text-muted">{{ item.temperature }}</span>
+        <span
+          class="w-12 bg-linear-to-b to-cyan-900/5 rounded-t-lg"
+          [class.from-primary]="$index % 2 === 0"
+          [class.from-secondary]="$index % 2 !== 0"
+          [class.h-20]="$index % 2 === 0"
+          [class.h-12]="$index % 2 !== 0"
+        ></span>
+        <span class="text-[0.5rem] text-muted opacity-50 uppercase font-sans">{{ item.name }}</span>
+      </div>
+    }
+  </app-card>
+
+  @if (metrics(); as item) {
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-stretch">
+      <app-card class="flex flex-col items-stretch" [card]="item.precip.card">
+        <div class="flex flex-col w-full gap-y-2">
+          <span class="text-2xl text-gray-200">
+            {{ item.precip.value ?? '—' }}
+            <sub class="text-xs text-muted">{{ item.precip.sub }}</sub>
+          </span>
+          <div class="h-1 bg-gray-800 overflow-hidden">
+            <div
+              class="h-1 bg-linear-to-r from-primary to-secondary"
+              [style.width.%]="item.precip.value ?? 0"
+            ></div>
+          </div>
         </div>
-        }
-    </app-card>
-    <div class="grid grid-cols-3 gap-2 items-stretch">
-        <app-card class="flex flex-col items-stretch" [card]="period().precip.card">
-            <div class="flex flex-col w-full gap-y-2">
-                <span class="text-2xl text-gray-200">
-                    {{period().precip.value}}
-                    <sub class=" text-xs text-muted">{{period().precip.sub}}</sub>
-                </span>
-                <div class="h-1 bg-gray-800 overflow-hidden">
-                    <div class="h-1 bg-linear-to-r from-primary to-secondary w-[40%]"></div>
-                </div>
-            </div>
-        </app-card>
+      </app-card>
 
-        <app-card class="flex flex-col items-stretch" [card]="period().heat.card">
-            <div class="flex flex-col w-full gap-y-2">
-                <span class="text-2xl text-gray-200">
-                    {{period().heat.value}}
-                    <sub class=" text-xs text-muted">{{period().heat.sub}}</sub>
-                </span>
-                <div class="h-1 bg-gray-800 overflow-hidden">
-                    <div class="h-1 bg-linear-to-r from-primary to-secondary w-[40%]"></div>
-                </div>
-            </div>
-        </app-card>
+      <app-card class="flex flex-col items-stretch" [card]="item.heat.card">
+        <div class="flex flex-col w-full gap-y-2">
+          <span class="text-2xl text-gray-200">
+            {{ item.heat.value }}
+            <sub class="text-xs text-muted">{{ item.heat.sub }}</sub>
+          </span>
+        </div>
+      </app-card>
 
-        <app-card class="flex flex-col items-stretch" [card]="period().wind.card">
-            <div class="flex flex-col w-full gap-y-2">
-                <span class="text-2xl text-gray-200">
-                    {{period().wind.value}}
-                    <sub class=" text-xs text-muted">{{period().wind.sub}}</sub>
-                </span>
-                <div class="h-1 bg-gray-800 overflow-hidden">
-                    <div class="h-1 bg-linear-to-r from-primary to-secondary w-[40%]"></div>
-                </div>
-            </div>
-        </app-card>
-
+      <app-card class="flex flex-col items-stretch" [card]="item.wind.card">
+        <div class="flex flex-col w-full gap-y-2">
+          <span class="text-2xl text-gray-200">{{ item.wind.value }}</span>
+        </div>
+      </app-card>
     </div>
+  }
 </div>

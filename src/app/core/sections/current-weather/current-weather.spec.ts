@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { weatherPeriodFixture } from '../../../../testing/weather.fixture';
 import { CurrentWeather } from './current-weather';
 
 describe('CurrentWeather', () => {
@@ -12,6 +13,7 @@ describe('CurrentWeather', () => {
 
     fixture = TestBed.createComponent(CurrentWeather);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('current', weatherPeriodFixture);
     await fixture.whenStable();
   });
 
