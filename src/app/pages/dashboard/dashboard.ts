@@ -10,6 +10,7 @@ import { WeatherService } from '../../service/weather-service';
 import { IWeatherForecast } from '../../models/weather-forecast.model';
 import { Graphic } from "../../core/common/graphic/graphic";
 import { IGraphic } from '../../core/common/graphic/graphic.model';
+import { IWeatherGeometry } from '../../models/weather-geometry.model';
 
 @Component({
 	imports: [Top, Header, CurrentWeather, Card, Periods, Graphic],
@@ -26,9 +27,19 @@ export class Dashboard {
 		this.weatherService.getWeather().subscribe(weather => this.weatherForecast.set(weather));
 	}
 
-	readonly dataHeader = computed(() => {
+	readonly processWeather = computed(() => {
 		let weather = this.weatherForecast();
 		let { geometry } = weather;
+		let periods = weather.properties.periods.slice(2, 8);
+		return {
+			header: this.processHeader(geometry),
+			currentPeriod: weather.properties.periods[0],
+			graphic: this.processGraphic(periods),
+			periods: weather.properties.periods
+		}
+	});
+
+	processHeader(geometry: IWeatherGeometry) {
 		let coordinates = geometry.coordinates.flatMap(v => v)[0];
 		let lat = coordinates[1] ?? '-';
 		let long = coordinates[0] ?? '-';
@@ -38,19 +49,9 @@ export class Dashboard {
 			title: 'Orlando',
 			description: description
 		}
+	}
 
-	});
-
-	readonly currentPeriod = computed<IWeatherPeriod>(() => {
-		let weather = this.weatherForecast();
-		return weather.properties.periods[0];
-	});
-
-	readonly temperature = signal('');
-
-	readonly graphic = computed(() => {
-		let weather = this.weatherForecast();
-		let periods = weather.properties.periods.slice(2, 8);
+	processGraphic(periods: IWeatherPeriod[]) {
 		let trend: IGraphic = {
 			card: {
 				title: 'Temperature trend',
@@ -58,10 +59,6 @@ export class Dashboard {
 			},
 			periods: periods
 		};
-
 		return trend;
-	});
-
-	
-
+	}
 }
