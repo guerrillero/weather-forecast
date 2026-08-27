@@ -1,0 +1,17 @@
+<div class="pt-3 flex items-start gap-6 text-wrap">
+    <div style="display: flex; align-items: flex-start;">
+        <div class="temperature">
+            {{ current().temperature }}
+        </div>
+        <div class="temperature__unit">°{{current().temperatureUnit}}</div>
+    </div>
+    <div class="flex flex-col gap-2 pt-2">
+        <div class="text-sky-100 text-md">
+            {{ current().shortForecast}}
+        </div>
+        <div class="flex flex-col gap-1 font-sans text-sm space-x-0.5 ">
+            <span class="text-gray-400">H {{ current().windSpeed }} · {{ current().windDirection }}</span>
+            <span class="text-primary">{{ current().name }}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<main class="relative w-full background font-brand text-primary">
+    <div class="frames"></div>
+    <div class="radar"></div>
+    <div class="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8 flex flex-col gap-y-8">
+        <app-top></app-top>
+        <app-header [data]="dataHeader()"></app-header>
+        <app-current-weather [current]="currentPeriod()"></app-current-weather>
+        <app-graphic [graphic]="graphic()"></app-graphic>
+    </div>
+    <app-periods [periods]="[]"></app-periods>
+</main>

@@ -1,0 +1,28 @@
+<div class="p-6">
+    <div class="flex justify-between mb-2">
+        <div class="flex justify-start text-muted text-xs">EXTENDED FORECAST</div>
+        <div class="flex justify-end text-secondary text-xs">DAY / NIGHT</div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        @for (item of [1,2,3,4,5,6,7,8,9]; track $index) {
+            <div class="flex justify-between items-center border-t border-t-gray-800 py-2 gap-2">
+                <div class="flex flex-col justify-between items-start">
+                    <span class="text-sm text-wrap text-cyan-100">Lorem ipsum </span>
+                    <span class="text-[0.7rem] text-wrap text-muted/50">Lorem ipsum </span>
+                </div>
+                <div class="flex flex-col justify-between items-start gap-y-1">
+                    <span class="text-sm text-wrap text-cyan-100">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                    <div class="flex justify-between items-center gap-x-1 w-full">
+                        <div class="h-1 bg-gray-800 overflow-hidden w-full">
+                            <div class="h-1 bg-linear-to-r from-primary to-secondary w-[40%]"></div>
+                        </div>
+                        <span class="text-[0.6rem]">33%</span>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-between items-center">
+                    <span class="text-secondary text-2xl">77°</span>
+                </div>
+            </div>
+        }
+    </div>
+</div>
