@@ -1,10 +1,11 @@
 @let period = current();
-<div class="pt-3 flex items-start gap-6 text-wrap">
+<div class="relative pt-3 flex flex-col sm:flex-row items-start gap-6 text-wrap">
+    <img [src]="period.icon" [alt]="period.shortForecast" class=" top-0 left-0 size-fit sm:size-28" />
   <div class="flex items-start">
     <div class="temperature">
-      {{ period.temperature }}
+      {{ period.temperature | toCelcius:1 }}
     </div>
-    <div class="temperature__unit">°{{ period.temperatureUnit }}</div>
+    <div class="temperature__unit">°C</div>
   </div>
   <div class="flex flex-col gap-2 pt-2">
     <div class="text-sky-100 text-md">

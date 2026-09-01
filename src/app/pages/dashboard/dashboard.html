@@ -1,31 +1,28 @@
 <main class="relative w-full background font-brand text-primary">
-  @let state = weatherState();
-  <div class="frames" aria-hidden="true"></div>
-  <div class="radar" aria-hidden="true"></div>
-  <div class="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8 flex flex-col gap-y-8">
-    <app-top />
-
-    @if (weatherView(); as weather) {
-      <app-header [data]="weather.header" />
-      <app-current-weather [current]="weather.currentPeriod" />
-      <app-graphic [graphic]="weather.graphic" />
-      <app-periods [periods]="weather.periods" />
-    } @else if (state.status === 'error') {
-      <section class="rounded-xl border border-red-400/30 bg-red-950/20 p-6" role="alert">
-        <h1 class="text-xl text-red-200">Forecast unavailable</h1>
-        <p class="mt-2 text-sm text-gray-300">{{ state.message }}</p>
-        <button
-          class="mt-4 rounded-lg border border-primary/40 px-4 py-2 text-sm text-primary hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-          type="button"
-          (click)="reloadWeather()"
-        >
-          Try again
-        </button>
-      </section>
-    } @else {
-      <div class="flex min-h-64 items-center justify-center" role="status" aria-live="polite">
-        <span class="text-sm text-muted">Loading the latest forecast…</span>
-      </div>
-    }
-  </div>
+	@let state = weatherState();
+	<div class="frames" aria-hidden="true"></div>
+	<div class="radar" aria-hidden="true"></div>
+	<div class="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8 flex flex-col gap-y-8 relative isolate">
+		<app-top />
+		@if (weatherView(); as weather) {
+		<app-header [data]="weather.header" />
+		<app-current-weather [current]="weather.currentPeriod" />
+		<app-graphic [graphic]="weather.graphic" />
+		<app-periods [periods]="weather.periods" />
+		} @else if (state.status === 'error') {
+		<section class="rounded-xl border border-red-400/30 bg-red-950/20 p-6" role="alert">
+			<h1 class="text-xl text-red-200">Forecast unavailable</h1>
+			<p class="mt-2 text-sm text-gray-300">{{ state.message }}</p>
+			<button
+				class="mt-4 rounded-lg border border-primary/40 px-4 py-2 text-sm text-primary hover:bg-primary/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+				type="button" (click)="reloadWeather()">
+				Try again
+			</button>
+		</section>
+		} @else {
+		<div class="flex min-h-64 items-center justify-center" role="status" aria-live="polite">
+			<span class="text-sm text-muted">Loading the latest forecast…</span>
+		</div>
+		}
+	</div>
 </main>
