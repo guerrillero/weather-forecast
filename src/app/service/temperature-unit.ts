@@ -1,6 +1,6 @@
 import { Service, signal } from '@angular/core';
 
-enum UnitEnum {
+export enum UnitEnum {
 	CELCIUS = 'C',
 	FAHRENHEIT = 'F'
 }
