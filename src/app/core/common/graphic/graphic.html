@@ -2,7 +2,7 @@
   <app-card class="flex items-stretch" [card]="graphic().card">
     @for (item of periods(); track item.number) {
       <div class="flex flex-col justify-end items-center gap-2">
-        <span class="text-xs text-muted">{{ item.temperature }}</span>
+        <span class="text-xs text-muted">{{ item.temperature | formatTemperature:1 }}</span>
         <span
           class="w-12 bg-linear-to-b to-cyan-900/5 rounded-t-lg"
           [class.from-primary]="$index % 2 === 0"

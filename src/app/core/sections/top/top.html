@@ -1,7 +1,10 @@
 <div class="flex justify-between items-center font-sans text-gray-400 text-xs">
   <div>{{ today() }} · {{ time() }}</div>
-  <div class="flex justify-between items-center gap-2">
-    <span class="flex dot-pulse"></span>
-    <span>{{ broadcasting }}</span>
+  <div class="flex flex-col gap-y-2">
+    <div class="flex justify-between items-center gap-2">
+      <span class="flex dot-pulse"></span>
+      <span>{{ broadcasting }}</span>
+    </div>
+    <app-temperature-unit-selector />
   </div>
 </div>

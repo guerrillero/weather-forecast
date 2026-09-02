@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { Card } from '../card/card';
 import { IGraphic } from './graphic.model';
+import { FormatTemperature } from '../../../pipes/format-temperature-pipe';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Card],
+  imports: [Card, FormatTemperature],
   selector: 'app-graphic',
   styleUrl: './graphic.css',
   templateUrl: './graphic.html',
